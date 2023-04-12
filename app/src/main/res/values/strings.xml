@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Suggeter App</string>
+    <string name="for_you">For You</string>
+    <string name="fayoum">Fayoum</string>
+    <string name="stutes_air">Stutes Air</string>
+    <string name="_16">16 °</string>
+    <string name="no_internet">no_internet</string>
+</resources>

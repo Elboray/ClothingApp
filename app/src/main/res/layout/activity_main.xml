@@ -42,19 +42,6 @@
         app:layout_constraintStart_toStartOf="@id/city"
         app:layout_constraintTop_toBottomOf="@id/city" />
 
-    <TextView
-        android:id="@+id/no_internet"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:visibility="gone"
-        android:text="@string/no_internet"
-        android:textColor="@color/black"
-        app:drawableStartCompat="@drawable/baseline_signal_wifi_connected_no_internet_4_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
     <ImageView
         android:layout_width="106dp"
         android:layout_height="83dp"

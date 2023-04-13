@@ -5,7 +5,7 @@ import java.io.IOException
 
 object API_Request {
     fun Get_API_Request(onResponse: (response: Response) -> Unit,
-                        onFailure: () -> Unit,){
+                       ){
         val client=OkHttpClient()
         val url=HttpUrl.Builder().scheme("https")
             .host("api.tomorrow.io")
@@ -19,13 +19,15 @@ object API_Request {
             .build()
 
         val request=Request.Builder().url(url).build()
-        client.newCall(request).enqueue(object :Callback{
-            override fun onFailure(call: Call, e: IOException) =  onFailure()
+        client.run {
+            newCall(request).enqueue(object :Callback{
+                override fun onFailure(call: Call, e: IOException) {}
 
-            override fun onResponse(call: Call, response: Response) = onResponse(response)
+                override fun onResponse(call: Call, response: Response) = onResponse(response)
 
 
-        })
+            })
+        }
     }
 
 

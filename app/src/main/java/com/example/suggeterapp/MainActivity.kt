@@ -1,12 +1,8 @@
 package com.example.suggeterapp
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.example.suggeterapp.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import okhttp3.Response
@@ -87,23 +83,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-
-    private fun onFailure() {
-        if (!isNetworkAvailable()) {
-            showNoInternetError()
-        }
-    }
-
-
-    private fun showNoInternetError() {
-        binding.noInternet.visibility = View.VISIBLE
-    }
-
-
-
-
     @SuppressLint("SetTextI18n")
     private fun updateUIData(
         temperature: Double,
@@ -131,12 +110,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun isNetworkAvailable(): Boolean {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
-        val network = connectivityManager?.activeNetwork
-        val capabilities = connectivityManager?.getNetworkCapabilities(network)
-        return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
-    }
 
 
 
@@ -147,7 +120,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeAPIRequest() {
-        API_Request.Get_API_Request(::onResponse, ::onFailure)
+        API_Request.Get_API_Request(::onResponse)
     }
 
     private fun initializePrefsUtil() {

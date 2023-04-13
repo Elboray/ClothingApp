@@ -1,5 +1,6 @@
 package com.example.suggeterapp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.example.suggeterapp.databinding.ItemImageBinding
 
 class ClothAdapter(private val ClothList:List<Cloth>) :RecyclerView.Adapter<ClothAdapter.ClothViewHolder>(){
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClothViewHolder {
      val bind=ItemImageBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ClothViewHolder(bind)

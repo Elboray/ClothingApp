@@ -27,27 +27,66 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun updateRecycler(temperature: Double, CurrentData: String) {
-        if (temperature in 10.0..35.0 && CurrentData != PrefsUtil.date && PrefsUtil.TeShirt != 1) {
-            val ClothListOne: ClothAdapter = ClothAdapter(dataSource.TeShirt)
-            binding.TeShirtRecycler.adapter = ClothListOne
-            PrefsUtil.TeShirt = 1
 
-        } else if (temperature in 35.0..40.0 && CurrentData != PrefsUtil.date && PrefsUtil.TeShirt != 2) {
-            val ClothListTwo: ClothAdapter = ClothAdapter(dataSource.Pantalon)
-            binding.TeShirtRecycler.adapter = ClothListTwo
-            PrefsUtil.TeShirt = 2
 
-        } else if (temperature in 35.0..40.0 && CurrentData != PrefsUtil.date && PrefsUtil.TeShirt != 3) {
-            val ClothListThree: ClothAdapter = ClothAdapter(dataSource.Shoes)
-            binding.TeShirtRecycler.adapter = ClothListThree
-            PrefsUtil.TeShirt = 3
+//    private fun updateRecycler(temperature: Double, CurrentData: String) {
+//        if (temperature in 10.0..35.0 && CurrentData != PrefsUtil.date && PrefsUtil.TeShirt != 1) {
+//            val ClothListOne: ClothAdapter = ClothAdapter(dataSource.TeShirt)
+//            binding.TeShirtRecycler.adapter = ClothListOne
+//            PrefsUtil.TeShirt = 1
+//
+//        } else if (temperature in 35.0..40.0 && CurrentData != PrefsUtil.date && PrefsUtil.TeShirt != 2) {
+//            val ClothListTwo: ClothAdapter = ClothAdapter(dataSource.Pantalon)
+//            binding.TeShirtRecycler.adapter = ClothListTwo
+//            PrefsUtil.TeShirt = 2
+//
+//        } else if (temperature in 35.0..40.0 && CurrentData != PrefsUtil.date && PrefsUtil.TeShirt != 3) {
+//            val ClothListThree: ClothAdapter = ClothAdapter(dataSource.Shoes)
+//            binding.TeShirtRecycler.adapter = ClothListThree
+//            PrefsUtil.TeShirt = 3
+//        }
+//        else{
+//            val default = ClothAdapter(dataSource.Shoes)
+//            binding.TeShirtRecycler.adapter = default
+//        }
+//    }
+
+
+    private fun updateRecycler(temperature: Double, currentDate: String) {
+        if (currentDate == PrefsUtil.date) {
+            return
         }
-        else{
-            val default = ClothAdapter(dataSource.Shoes)
-            binding.TeShirtRecycler.adapter = default
+
+        val selectedClothAdapter = when (temperature) {
+            in 10.0..35.0 -> {
+                if (PrefsUtil.TeShirt == 1) {
+                    ClothAdapter(dataSource.Shoes)
+                } else {
+                    PrefsUtil.TeShirt = 1
+                    ClothAdapter(dataSource.TeShirt)
+                }
+            }
+            in 35.0..40.0 -> {
+                if (PrefsUtil.TeShirt == 2) {
+                    ClothAdapter(dataSource.Shoes)
+                } else {
+                    PrefsUtil.TeShirt = 2
+                    ClothAdapter(dataSource.Pantalon)
+                }
+            }
+            else -> {
+                if (PrefsUtil.TeShirt == 3) {
+                    ClothAdapter(dataSource.Shoes)
+                } else {
+                    PrefsUtil.TeShirt = 3
+                    ClothAdapter(dataSource.Shoes)
+                }
+            }
         }
+
+        binding.TeShirtRecycler.adapter = selectedClothAdapter
     }
+
 
 
     private fun onResponse(response: Response) {

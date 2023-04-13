@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeAPIRequest() {
-        API_Request.Get_API_Request(::onResponse)
+        APIRequest.getApiRequest(::onResponse)
     }
 
     private fun initializePrefsUtil() {

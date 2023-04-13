@@ -3,11 +3,11 @@ package com.example.suggeterapp
 import okhttp3.*
 import java.io.IOException
 
-object API_Request {
-    fun Get_API_Request(onResponse: (response: Response) -> Unit,
-                       ){
-        val client=OkHttpClient()
-        val url=HttpUrl.Builder().scheme("https")
+object APIRequest {
+    fun getApiRequest(onResponse: (response: Response) -> Unit) {
+        val client = OkHttpClient()
+        val url = HttpUrl.Builder()
+            .scheme("https")
             .host("api.tomorrow.io")
             .addPathSegment("v4")
             .addPathSegment("timelines")
@@ -18,17 +18,17 @@ object API_Request {
             .addQueryParameter("apikey", "Wk299fLoNufHCZG1reJeBSmaG29zdGEJ")
             .build()
 
-        val request=Request.Builder().url(url).build()
-        client.run {
-            newCall(request).enqueue(object :Callback{
-                override fun onFailure(call: Call, e: IOException) {}
+        val request = Request.Builder().url(url).build()
 
-                override fun onResponse(call: Call, response: Response) = onResponse(response)
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {}
 
-
-            })
-        }
+            override fun onResponse(call: Call, response: Response) {
+                onResponse(response)
+            }
+        })
     }
+
 
 
 }

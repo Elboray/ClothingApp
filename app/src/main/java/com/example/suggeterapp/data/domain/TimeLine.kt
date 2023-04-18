@@ -1,5 +1,6 @@
-package com.example.suggeterapp
+package com.example.suggeterapp.data.domain
 
+import com.example.suggeterapp.data.domain.Interval
 import com.google.gson.annotations.SerializedName
 
 data class TimeLine(

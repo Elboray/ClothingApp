@@ -1,9 +1,10 @@
-package com.example.suggeterapp
+package com.example.suggeterapp.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.suggeterapp.data.domain.Cloth
 import com.example.suggeterapp.databinding.ItemImageBinding
 
 
@@ -20,7 +21,7 @@ class ClothAdapter(private val ClothList:List<Cloth>) :RecyclerView.Adapter<Clot
      override fun getItemCount(): Int = ClothList.size
 
     class ClothViewHolder(private val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun getImage(cloth:Cloth){
+      fun getImage(cloth: Cloth){
           binding.clothImage.setImageResource(cloth.imageSource)
       }
     }

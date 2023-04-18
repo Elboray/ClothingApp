@@ -1,4 +1,4 @@
-package com.example.suggeterapp
+package com.example.suggeterapp.util
 
 import okhttp3.*
 import java.io.IOException
@@ -15,13 +15,15 @@ object APIRequest {
             .addQueryParameter("fields", "temperature,humidity,windSpeed,cloudCover,weatherCode")
             .addQueryParameter("timesteps", "current")
             .addQueryParameter("units", "metric")
-            .addQueryParameter("apikey", "Wk299fLoNufHCZG1reJeBSmaG29zdGEJ")
+            .addQueryParameter("apikey", "0ZGMag5N2NzRAPps9WFmetlBbQXZTaNg")
             .build()
 
         val request = Request.Builder().url(url).build()
 
         client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {}
+            override fun onFailure(call: Call, e: IOException) {
+                Error("onFailure")
+            }
 
             override fun onResponse(call: Call, response: Response) {
                 onResponse(response)

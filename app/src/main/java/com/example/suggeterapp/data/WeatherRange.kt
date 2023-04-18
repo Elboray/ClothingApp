@@ -1,4 +1,4 @@
-package com.example.suggeterapp
+package com.example.suggeterapp.data
 
 object WeatherRange {
     val weatherrange = mapOf(
